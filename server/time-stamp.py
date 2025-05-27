@@ -20,7 +20,7 @@ def extract_video_id(url: str) -> str:
 
 
 # Get transcript with timestamps from YouTube
-def get_transcript_text(video_id: str, max_segments: int = 30) -> str:
+def get_transcript_text(video_id: str) -> str:
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id)
     except TranscriptsDisabled:
