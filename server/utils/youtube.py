@@ -28,13 +28,28 @@ def get_transcript_text(video_id: str) -> str:
     return "\n".join(lines)
 
 # build the prompt for Gemini
-def build_prompt(transcript_text: str) -> str:
+def build_timestamp_prompt(transcript_text: str) -> str:
     return (
         "Here's a transcript with timestamps from a YouTube video:\n\n"
         f"{transcript_text}\n\n"
         "Return a JSON object where each key is the timestamp (like '0:42') of a new scene/topic, "
         "and each value is a very short, clean title for that section (1-5 words). Respond only with valid JSON. No explanation."
     )
+
+def build_chat_prompt(transcript_text: str, inquiry: str) -> str:
+    return (
+        "You are an assistant that answers questions about YouTube videos based on transcripts with timestamps.\n\n"
+        "Here is the transcript:\n\n"
+        f"{transcript_text}\n\n"
+        "Here is the user's question:\n\n"
+        f"{inquiry}\n\n"
+        "Please return your response in **valid JSON format** as shown below:\n"
+        "{\n"
+        "  \"response\": \"<your answer here with [timestamp] citations at relevant points>\"\n"
+        "}\n"
+        "Be concise. Use only timestamps present in the transcript, and insert them at relevant points inside square brackets. If the answer is not in the video, then convey that."
+    )
+
 
 # Run Gemini API on the transcript
 def query_gemini(prompt: str):

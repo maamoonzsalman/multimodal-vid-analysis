@@ -9,7 +9,7 @@ class URL(BaseModel):
 router = APIRouter()
 
 @router.post('/')
-async def get_timestamps(payload: URL):
+async def generate_timestamps(payload: URL):
     json_data = timestamp_controller.handle_get_timestamps(payload.url)
     print("Returning json data:", json_data) 
     return {"json data": json_data}
