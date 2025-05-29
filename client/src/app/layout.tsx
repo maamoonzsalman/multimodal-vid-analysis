@@ -24,8 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-radial from-[#2e0a4e] via-[#4e0a8e] to-[#1d043a] bg-cover min-h-screen text-white`}>
-        <main className='flex items-center justify-center min-h-screen'>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white`}>
+        <main className='min-h-screen'>
           {children}
         </main>
       </body>
