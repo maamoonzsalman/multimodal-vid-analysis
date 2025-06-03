@@ -7,9 +7,11 @@ export default function Home() {
           <div className='top'>
             <NavBar/>
           </div>
-          <div className='bottom h-full flex justify-center items-center'>
+          <div className='bottom h-full flex justify-center items-center '>
             <UploadVideoBox/>
           </div>
+          
+          
     </div>
   )
 };
