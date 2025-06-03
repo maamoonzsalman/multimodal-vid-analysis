@@ -28,8 +28,15 @@ export default function UploadVideoInput() {
                         className=" mb-4 rounded-lg border pl-12 bg-black/50 border-purple-500/50 text-white placeholder-gray-400 focus:border-cyan-400 w-full p-2 py-2"
                         required
                     />
-                    
                 </div>
+                <>
+                    <button
+                    type="submit"
+                    className="mb-4 rounded-lg w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white font-semibold py-2"
+                    >
+                    Analyze Video
+                    </button>
+                </>
             </form>
         </>
     )

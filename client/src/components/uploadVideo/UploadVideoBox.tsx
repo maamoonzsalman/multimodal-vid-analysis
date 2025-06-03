@@ -1,5 +1,4 @@
 import UploadVideoInput from './UploadVideoInput';
-import { AnalyzeVideo } from './AnalyzeVideo';
 import { Upload, Youtube, Sparkles } from "lucide-react"
 
 
@@ -18,10 +17,6 @@ export default function UploadVideoBox() {
             <div>
               <UploadVideoInput/>
             </div>
-            <div>
-              <AnalyzeVideo/>
-            </div>
-
             <div className="grid grid-cols-3 gap-4 pt-6 border-t border-purple-500/30">
               <div className="text-center">
                 <div className="w-12 h-12 mx-auto bg-purple-500/20 rounded-lg flex items-center justify-center mb-2">

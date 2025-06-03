@@ -10,8 +10,8 @@ export default function Home() {
           <div className='bottom h-full flex justify-center items-center '>
             <UploadVideoBox/>
           </div>
-          
-          
+
+
     </div>
   )
 };
