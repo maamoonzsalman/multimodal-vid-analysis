@@ -1,21 +1,28 @@
-'use client'
+"use client"
 
-import React from "react"
-import { useState } from "react"
-import { Youtube } from "lucide-react"
+import React from "react";
+import { useState } from "react";
+import { Youtube } from "lucide-react";
+import { useRouter } from "next/navigation";
+import extractVideoId from "@/utils/extractVideoId";
 
 interface FormData {
     url: string
 }
 
 export default function UploadVideoInput() {
-    const [form, setForm] = useState<FormData>({
-        url: ''
-    });
+    const [form, setForm] = useState<FormData>({ url: '' });
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const videoId = extractVideoId(form.url)
+        router.push(`/analyze/${videoId}`);
+    };
 
     return (
         <>
-            <form className=''>
+            <form className='' onSubmit={ handleSubmit }>
                 <div className="relative">
                     <Youtube className="mt-5 absolute left-3  transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
