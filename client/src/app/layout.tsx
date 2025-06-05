@@ -23,9 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white`}>
-        <main className='min-h-screen'>
+    <html lang="en" className='h-[170vh]'>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white flex flex-col h-full`}>
+        <main className='flex-grow flex flex-col w-full'>
           {children}
         </main>
       </body>

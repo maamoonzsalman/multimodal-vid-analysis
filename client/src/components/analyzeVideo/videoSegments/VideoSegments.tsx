@@ -40,7 +40,7 @@ export default function VideoSegments() {
     }, [url])
 
     return (
-        <div className="bg-black/40 border-purple-500/30 backdrop-blur-sm rounded-lg w-1/5 h-[500px]">
+        <div className="bg-black/40 border-purple-500/30 backdrop-blur-sm rounded-lg w-[460px] h-[515px]">
             
             <div className="p-4 border-b border-purple-500/30">
                 <h3 className="font-semibold text-xl text-white flex items-center space-x-2">

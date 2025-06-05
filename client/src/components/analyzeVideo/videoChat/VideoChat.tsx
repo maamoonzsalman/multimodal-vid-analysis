@@ -51,7 +51,7 @@ export default function VideoChat() {
     } 
 
     return (
-        <div className="h-[500px] w-1/5 rounded-lg mt-6 bg-black/40 border-purple-500/30 backdrop-blur-sm flex flex-col">
+        <div className="h-[515px] w-[460px] rounded-lg mt-6 bg-black/40 border-purple-500/30 backdrop-blur-sm flex flex-col">
             
             <div className="p-4 border-b border-purple-500/30">
                 <h3 className="font-semibold text-xl text-white flex items-center space-x-2">
