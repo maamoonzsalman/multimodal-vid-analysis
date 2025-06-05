@@ -1,6 +1,7 @@
 import re
 import json
-from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
+import time
+from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled, CouldNotRetrieveTranscript
 from core.gemini import gemini_model
 
 
@@ -12,20 +13,29 @@ def extract_video_id(url: str) -> str:
     return video_id
 
 # Get transcript with timestamps from YouTube
-def get_transcript_text(video_id: str) -> str:
-    try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id)
-    except TranscriptsDisabled:
-        raise RuntimeError("Transcript is disabled or unavailable for this video.")
-    
-    # slice transcript
-    segments = transcript
+def get_transcript_text(video_id: str, retries: int = 6, delay: float = 2.0) -> str:
+    last_exception = None
 
-    lines = [
-        f"{int(seg['start'])//60}:{int(seg['start'])%60:02d} - {seg['text']}"
-        for seg in segments
-    ]
-    return "\n".join(lines)
+    for attempt in range(retries):
+        try:
+            transcript = YouTubeTranscriptApi.get_transcript(video_id)
+            if not transcript:
+                raise RuntimeError("Transcript was empty.")
+            
+            lines = [
+                f"{int(seg['start'])//60}:{int(seg['start'])%60:02d} - {seg['text']}"
+                for seg in transcript
+            ]
+            return "\n".join(lines)
+
+        except (TranscriptsDisabled, CouldNotRetrieveTranscript) as e:
+            raise RuntimeError(f"Transcript error: {str(e)}")
+        except Exception as e:
+            last_exception = e
+            print(f"Retry {attempt+1}/{retries} failed. Retrying in {delay} sec...")
+            time.sleep(delay)
+
+    raise RuntimeError(f"Transcript fetch failed after {retries} retries: {str(last_exception)}")
 
 # build the prompt for Gemini
 def build_timestamp_prompt(transcript_text: str) -> str:

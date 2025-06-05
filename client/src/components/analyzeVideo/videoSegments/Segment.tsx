@@ -27,7 +27,7 @@ export default function Segment({ segment }: SegmentProps) {
                       {segment.title}
                     </h4>
                     <div className="flex items-center space-x-4 mt-1">
-                      <span className="text-cyan-400 text-sm font-mono">{formatTime(segment.timestamp)}</span>
+                      <span className="text-cyan-400 text- font-mono">{formatTime(segment.timestamp)}</span>
                     </div>
                   </div>
                   <Play className="w-4 h-4 text-gray-400 group-hover:text-cyan-400 transition-colors" />

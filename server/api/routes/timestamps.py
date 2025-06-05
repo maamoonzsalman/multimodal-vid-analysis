@@ -16,4 +16,5 @@ async def generate_timestamps(payload: URL):
         return {"json data": json_data}
     except RuntimeError as e:
         print("Transcript error:", str(e))
-        raise HTTPException(status_code=400, detail=str(e))
+        raise HTTPException(status_code=400, detail=f"Transcript error: {str(e)}")
+
